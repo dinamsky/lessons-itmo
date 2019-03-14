@@ -1,11 +1,17 @@
 package homework2;
-
+import java.util.Scanner;
 public class homework2 {
     public static void main(String[] args) {
-        int a = 6;
-        int b = 8;
-        int c = 3;
+        Scanner in = new Scanner(System.in);
         System.out.println("Задача 1 - Убывающая последовательность");
+        System.out.println("ВВедите первое число ");
+        int a = in.nextInt();
+        System.out.println("ВВедите второе число ");
+        int b = in.nextInt();
+        System.out.println("ВВедите второе число ");
+        int c = in.nextInt();
+
+
         if (a > b && a > c) {
             System.out.println(a);
             if (b > c) {
@@ -52,8 +58,9 @@ public class homework2 {
             System.out.println(f + " number " + (int) Math.pow(2, f));
         }
         System.out.println("Задача 4 Проверка натурального числа на простоту)");
-
-        int n = 456;
+        Scanner in2 = new Scanner(System.in);
+        System.out.println("Введите число - проверим простое ли оно!");
+        int n = in2.nextInt();
         for (int g = 2; g < n; g++){
             int r = n%g;
             if (r!=0){
@@ -75,7 +82,7 @@ public class homework2 {
 
         System.out.println("Задача 6 Счастливый билет");
         int m=1;
-        for(int i=1001;i<1000000;i++){
+        for(int i=1;i<1000000;i++){
             int i1=i/100000%10;
             int i2=i/10000%10;
             int i3=i/1000%10;
@@ -83,7 +90,7 @@ public class homework2 {
             int i5=i/10%10;
             int i6=i%10;
             if((i1+i2+i3)==(i4+i5+i6)){
-                System.out.println("Ура - Счастливый билет " + i);
+               // System.out.println("Ура - Счастливый билет " + i);
                 m++;
             }
         }
@@ -120,10 +127,10 @@ public class homework2 {
             int i4=i/10%10;
             int i5=i%10;
             if (i1 == 4 || i2 == 4 || i3 == 4 || i4 == 4 || i5 == 4){
-                System.out.println("Нeсчастливый танк бортовой номер " + i);
+                //System.out.println("Нeсчастливый танк бортовой номер " + i);
                 tech++;}
             if (i1 == 1 && i2 == 3 || i2 == 1 && i3 == 3 || i3 == 1 && i4 == 3 || i4 == 1 && i5 == 3)
-            { System.out.println("Нeсчастливый танк бортовой номер " + i);
+            { //System.out.println("Нeсчастливый танк бортовой номер " + i);
                 tech++;}
             }
 
