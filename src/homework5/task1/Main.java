@@ -5,14 +5,14 @@ public class Main {
 
         NodeList myNodeList = new NodeList();
 
-        myNodeList.add(4);
-        myNodeList.add(2);
-        myNodeList.add(9);
-        myNodeList.add(11);
+        myNodeList.add(574);
+        myNodeList.add(332);
+        myNodeList.add(329);
+        myNodeList.add(6711);
 
         System.out.println(myNodeList);
 
-        System.out.println(myNodeList.get(3));
+        System.out.println(myNodeList.get(1));
         myNodeList.remove(1);
         System.out.println(myNodeList);
 
@@ -20,10 +20,10 @@ public class Main {
 
         NodeList myQueueList = new NodeList();
 
-        myQueueList.enqueue(5);
-        myQueueList.enqueue(3);
-        myQueueList.enqueue(2);
-        myQueueList.enqueue(4);
+        myQueueList.enqueue(54565);
+        myQueueList.enqueue(3432);
+        myQueueList.enqueue(2332);
+        myQueueList.enqueue(43334);
 
         System.out.println(myQueueList);
         System.out.println("Выходит первый элемент очереди = " + myQueueList.dequeue());
@@ -33,10 +33,10 @@ public class Main {
 
         NodeList myStackList = new NodeList();
 
-        myStackList.push(4);
-        myStackList.push(8);
-        myStackList.push(2);
-        myStackList.push(1);
+        myStackList.push(4543);
+        myStackList.push(844332);
+        myStackList.push(2344);
+        myStackList.push(15455);
 
         System.out.println(myStackList);
         System.out.println("Выходит последний элемент стека = " + myStackList.pop());
