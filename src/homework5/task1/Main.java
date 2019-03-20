@@ -5,10 +5,10 @@ public class Main {
 
         NodeList myNodeList = new NodeList();
 
-        myNodeList.add(574);
+        myNodeList.add("Jimmy Page");
         myNodeList.add(332);
-        myNodeList.add(329);
-        myNodeList.add(6711);
+        myNodeList.add("http://dinamsky.com");
+        myNodeList.add("23:46");
 
         System.out.println(myNodeList);
 
@@ -20,10 +20,10 @@ public class Main {
 
         NodeList myQueueList = new NodeList();
 
-        myQueueList.enqueue(54565);
-        myQueueList.enqueue(3432);
-        myQueueList.enqueue(2332);
-        myQueueList.enqueue(43334);
+        myQueueList.enqueue("Angry Birds 247");
+        myQueueList.enqueue("Subway Surfers 456");
+        myQueueList.enqueue("Лисичанская 14 кв 8 ");
+        myQueueList.enqueue("Enter the void");
 
         System.out.println(myQueueList);
         System.out.println("Выходит первый элемент очереди = " + myQueueList.dequeue());
@@ -33,10 +33,10 @@ public class Main {
 
         NodeList myStackList = new NodeList();
 
-        myStackList.push(4543);
-        myStackList.push(844332);
-        myStackList.push(2344);
-        myStackList.push(15455);
+        myStackList.push("System log 1");
+        myStackList.push("System log 5");
+        myStackList.push("Error log");
+        myStackList.push("Default netconfig 456");
 
         System.out.println(myStackList);
         System.out.println("Выходит последний элемент стека = " + myStackList.pop());
