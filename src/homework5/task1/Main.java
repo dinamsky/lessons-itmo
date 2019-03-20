@@ -12,7 +12,7 @@ public class Main {
 
         System.out.println(myNodeList);
 
-        System.out.println(myNodeList.get(1));
+        System.out.println("NodeList remove - Node index[1] - "+myNodeList.get(1));
         myNodeList.remove(1);
         System.out.println(myNodeList);
 
