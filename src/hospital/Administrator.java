@@ -1,5 +1,5 @@
 package hospital;
 
-public class Administrator {
+public class Administrator extends Hospital{
     private String adminName;
 }

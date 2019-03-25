@@ -1,11 +1,11 @@
 package hospital;
 
+public class MainDoctor extends User {
 
-public class Patient extends User {
     private String name;
     private String login;
 
-    public Patient(String name, String login) {
+    public MainDoctor(String name, String login) {
         this.name = name;
         this.login = login;
     }
@@ -17,5 +17,6 @@ public class Patient extends User {
     public String getLogin() {
         return login;
     }
+
 
 }

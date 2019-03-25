@@ -1,39 +1,55 @@
 package hospital;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
-public class Doctor {
-    private String doctorName;
-    private String doctorSpeciality;
-    List<Patient> doctorPatientlist = new ArrayList<Patient>();
-    Date doctorDate;
+public class Doctor extends User{
 
-    public Doctor(String doctorName, String doctorSpeciality) {
-        this.doctorName = doctorName;
-        this.doctorSpeciality = doctorSpeciality;
-    }
-    public String getDoctorName(){
-        return doctorName;
-    }
-    public List<Patient> getDoctorPatientlist(){
-        return doctorPatientlist;
-    }
-    public void addPatientsToDoctor(Patient o){
-        doctorPatientlist.add(o);
-    }
-    String getDoctorSpeciality(){
-        return doctorSpeciality;
-    }
-    void showDoctorPatientList(){};
+    private String name;
+    private String login;
+    private String specialisation;
+    private int id;
 
-    public Date getDoctorDate(Doctor o){
-      return doctorDate;
-    };
+    SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    Map<Date, Patient> doctorTimePatientMap = new LinkedHashMap<>();
 
-    @Override
-    public String toString(){
-        return(doctorName+" "+doctorSpeciality+" "+ doctorPatientlist);
+    public Doctor(int id, String name, String login, String specialisation) {
+        this.id = id;
+        this.name = name;
+        this.login = login;
+        this.specialisation=specialisation;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getSpecialisation() {
+        return specialisation;
+    }
+
+    public Map<Date, Patient> getDoctorTimePatientMap() {
+        return doctorTimePatientMap;
+    }
+
+    public void addDoctorTimePatientMap(Date date, Patient patient){
+        doctorTimePatientMap.put(date, patient);
+    }
+
+    public String getTimeForPatients() {
+
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Map.Entry<Date, Patient> entry : doctorTimePatientMap.entrySet()) {
+            stringBuilder.append(sdfDate.format(entry.getKey())+" " + entry.getValue().getName()+"\n");
+        }
+        return stringBuilder.toString();
     }
 }
