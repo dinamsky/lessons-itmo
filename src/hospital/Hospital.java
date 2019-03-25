@@ -129,15 +129,40 @@ public class Hospital {
                             if (choise2 == doctorList.get(i).getId()) {
                                 System.out.println("Запись на этот год");
 
+                                int month;
+                                do {
+                                    System.out.println("Пожалуйста введите номер месяца!");
+                                    while (!scanner.hasNextInt()) {
+                                        System.out.println("Это не число!");
+                                        scanner.next(); // this is important!
+                                    }
+                                    month = scanner.nextInt();
+                                } while (month <= 12 & month >=1);
+                                System.out.println("Спасибо " + month);
 
-                                System.out.println("Введите месяц");
-                                int month = scanner.nextInt();
-                                System.out.println("Введите число");
-                                int day = scanner.nextInt();
+                                int day;
+                                do {
+                                    System.out.println("Пожалуйста введите число месяца!");
+                                    while (!scanner.hasNextInt()) {
+                                        System.out.println("Это не число!");
+                                        scanner.next(); // this is important!
+                                    }
+                                    day = scanner.nextInt();
+                                } while (day <= 30 & day >=1);
+                                System.out.println("Спасибо " + day);
 
                                 System.out.println("Интервал приема пациентов  час, рабочее время  08:00 - 20:00");
                                 System.out.println("В какое время вы хотите попасть на прием");
-                                int hour = scanner.nextInt();
+                                int hour;
+                                do {
+                                    System.out.println("Пожалуйста введите час!");
+                                    while (!scanner.hasNextInt()) {
+                                        System.out.println("Это не число!");
+                                        scanner.next(); // this is important!
+                                    }
+                                    hour = scanner.nextInt();
+                                } while (hour <= 23 & hour >=0);
+                                System.out.println("Спасибо " + hour);
 
 
                                 Calendar calendar = new GregorianCalendar(2019, month , day, hour, 00);
