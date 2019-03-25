@@ -205,7 +205,7 @@ public class Hospital {
 
     public User checkLogin() {
 
-        System.out.println("Введите логин");
+        System.out.println("Введите логин или exit для выхода");
         enterLogin = scanner.next();
 
         if (enterLogin.equalsIgnoreCase("exit"))
@@ -232,7 +232,7 @@ public class Hospital {
                 }
             }
             //если не нашли пациента
-            System.out.println("Вы не найдены в системе. Введите Ваше имя");
+            System.out.println("Вы не найдены в системе. Введите Ваше имя или exit для выхода");
             String name = scanner.next();
             if (!name.equalsIgnoreCase("exit")) {
                 patientCount++;
