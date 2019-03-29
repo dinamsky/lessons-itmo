@@ -8,6 +8,8 @@ public class Person {
     private int salary;
     private String company;
 
+    public Person(){}
+
     public Person(String name, int age, int salary, String company) {
         this.name = name;
         this.age = age;
@@ -132,63 +134,27 @@ class CompanyComparator implements Comparator<Person> {
 
 class PersonGenerator {
 
-    public static String NameGenerator() {
-        String name;
-
-        String[] Beginning = { "Kr", "Ca", "Ra", "Mrok", "Cru",
-                "Ray", "Bre", "Zed", "Drak", "Mor", "Jag", "Mer", "Jar", "Mjol",
-                "Zork", "Mad", "Cry", "Zur", "Creo", "Azak", "Azur", "Rei", "Cro",
-                "Mar", "Luk" };
-        String[] Middle = { "ok", "ir", "im", "is", "mee", "clo",
-                "red", "cra", "ark", "arc", "miri", "lori", "cres", "mur", "zer",
-                "marac", "zoir", "slamar", "salmar", "urak" };
-        String[] End = { "d", "ed", "ark", "arc", "es", "er", "der",
-                "tron", "med", "ure", "zur", "cred", "mur" };
-
-
-        Random random = new Random();
-
-        return Beginning[random.nextInt(Beginning.length)]+Middle[random.nextInt(Middle.length)] +End[random.nextInt(End.length)];
-    }
-
-
-    public static String CompanyGenerator() {
-
-        String[] End = { "Mac", "Bill", "Ford", "Sold", "Cruel",
-                "Ray", "Break", "Zed", "Dark", "Mort", "Jag", "Mer", "Jar", "Mjol",
-                "Zork", "Mad", "Cry", "Zur", "Creo", "Azak", "Azur", "Rei", "Cro",
-                "Mar", "Luk" };
-
-
-        String[] Domain = { "ru.", "eu.", "us.", "fr.", "it.", "gr.", "nz."};
-
-
-        Random random = new Random();
-
-        return Domain[random.nextInt(Domain.length)] + "company" + random.nextInt(100) + "." + End[random.nextInt(End.length)];
-    }
-
-
-
-    public static List<Person> generate(int num) {
-        if (num <= 0) {
-            return Collections.emptyList();
-        }
-
+    public static List<Person> generate(int num){
         Random random = new Random();
         List<Person> list = new ArrayList<>(num);
-
-
-
-        for (int i = 0; i < num; i++) {
-
-            list.add(new Person(NameGenerator(), random.nextInt(100), random.nextInt(1000), CompanyGenerator()));
-
+        int nameCount = Name.values().length;
+        int companyCount = Company.values().length;
+        int ageMax = 65;
+        int ageMin = 18;
+        int salaryMax = 200000;
+        int salaryMin = 10000;
+        for(int i = 0; i < num; i++){
+            Person person = new Person();
+            String name = Name.values()[random.nextInt(nameCount)].toString();
+            String company = Company.values()[random.nextInt(companyCount)].toString();
+            int age = random.nextInt(ageMax - ageMin + 1) + ageMin;
+            int salary = random.nextInt(salaryMax - salaryMin + 1) + salaryMin;
+            person.setName(name);
+            person.setCompany(company);
+            person.setAge(age);
+            person.setSalary(salary);
+            list.add(person);
         }
-
-
-
-
         return list;
     }
 
@@ -197,4 +163,26 @@ class PersonGenerator {
 
 }
 
-
+enum Name{
+    Луис, Анастас, Владимир, Марк, Антон, Виктория, Полина, Елизавета, Екатерина, Ксения,
+    Артём, Александр, Максим, Даниил, Дмитрий, Иван, Кирилл, Никита, Михаил, Егор;
+    public static Name getName(int ord){
+        for (Name name : values()){
+            if (ord == name.ordinal()) {
+                return name;
+            }
+        }
+        throw new AssertionError("Wrong ordinal: " + ord);
+    }
+}
+enum  Company {
+    Газнефть, ЛУКпром, РосНано, Сберик, РЖДент, X5тка, Теорема, Сургутнефтьалмазинвест, Магнитка, СетиСети;
+    public static Company getCompany(int ord){
+        for (Company company : values()){
+            if (ord == company.ordinal()) {
+                return company;
+            }
+        }
+        throw new AssertionError("Wrong ordinal: " + ord);
+    }
+}
