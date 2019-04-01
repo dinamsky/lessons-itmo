@@ -77,8 +77,33 @@ public class TextStat {
             map5.entrySet().stream().sorted(MyComparator.comparing(Map.Entry::getValue))
                     .forEach(entry -> System.out.println(entry.getKey() + " -> " + entry.getValue()));
 
+
+            Comparator<Map.Entry<String, Integer>> myComp = new Comparator<Map.Entry<String, Integer>>() {
+                @Override
+                public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                    return o1.getValue() - o2.getValue();
+                }
+            };
+            Comparator<Map.Entry<Character, Integer>> myComp2 = new Comparator<Map.Entry<Character, Integer>>() {
+                @Override
+                public int compare(Map.Entry<Character, Integer> o1, Map.Entry<Character, Integer> o2) {
+                    return o1.getValue() - o2.getValue();
+                }
+            };
+            TreeSet<Map.Entry<String, Integer>> sortedMap = new TreeSet<Map.Entry<String, Integer>>(myComp);
+            sortedMap.addAll(map.entrySet());
+            for (int i = 0; i < 10; i++) {
+                System.out.println(sortedMap.pollLast());
+            }
+
+            TreeSet<Map.Entry<Character, Integer>> sortedMap2 = new TreeSet<Map.Entry<Character, Integer>>(myComp2);
+            sortedMap2.addAll(map3.entrySet());
+            for (int i = 0; i < 10; i++) {
+                System.out.println(sortedMap2.pollLast());
+            }
+
             map.remove("");
-            System.out.println(map);
+           // System.out.println(map);
           //  System.out.println(map2);
            // System.out.println(map3);
         }
