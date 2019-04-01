@@ -13,6 +13,7 @@ public class TextStat {
             String fileName = "C:\\Users\\Игорь\\IdeaProjects\\lessons\\resources\\wp.txt";
             String str = Files.readString(Paths.get(fileName));
         //    System.out.println(str);
+            String str1 = str;
             str = str.toLowerCase();
             str = str.replaceAll("\\W", " ");
             System.out.println(str);
@@ -31,7 +32,7 @@ public class TextStat {
             }
             Map<String, Integer> map5 = new HashMap<>();
 
-            for(String s: str.split(" ")) {
+            for(String s: str1.split("[\\.|\\?|\\!]")) {
                 if(map5.containsKey(s)) {
                     map5.put(s, map5.get(s) + 1);
                 }
@@ -68,11 +69,12 @@ public class TextStat {
                 }
 
             }
-            Map<String, Integer> newMap = new TreeMap(Collections.reverseOrder());
 
             map.entrySet().stream().sorted(MyComparator.comparing(Map.Entry::getValue))
                     .forEach(entry -> System.out.println(entry.getKey() + " -> " + entry.getValue()));
             map3.entrySet().stream().sorted(MyComparator.comparing(Map.Entry::getValue))
+                    .forEach(entry -> System.out.println(entry.getKey() + " -> " + entry.getValue()));
+            map5.entrySet().stream().sorted(MyComparator.comparing(Map.Entry::getValue))
                     .forEach(entry -> System.out.println(entry.getKey() + " -> " + entry.getValue()));
 
             map.remove("");
