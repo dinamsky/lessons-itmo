@@ -15,7 +15,7 @@ public class TextStat {
         //    System.out.println(str);
             String str1 = str;
             str = str.toLowerCase();
-            str = str.replaceAll("\\W", " ");
+            str = str.replaceAll("\\W", "");
             System.out.println(str);
             Map<String, Integer> map = new HashMap<>();
 
