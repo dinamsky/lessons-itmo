@@ -10,6 +10,29 @@ import java.util.Arrays;
 @Enabled
 public class ReflectionExample {
     // Рефлексия в Java
+    public static void main(String[] args) throws NoSuchFieldException,
+            IllegalAccessException,
+            NoSuchMethodException,
+            InvocationTargetException,
+            InstantiationException {
+
+        System.out.println(String.class);
+        System.out.println(int.class);
+
+        SomeClass someClass = new SomeClass();
+        System.out.println(someClass.getClass());
+
+        Class cls = someClass.getClass();
+        System.out.println("сам класс " + cls.getName());
+
+        cls = cls.getSuperclass();
+        System.out.println("родитель " + cls.getName());
+
+        Class<SomeClass> someClassClass = SomeClass.class;
+        System.out.println(someClass.toString());
+    }
+
+
     public static void toString(SomeClass someClass) throws NoSuchFieldException, IllegalAccessException {
 
         Class<SomeClass> someCls = SomeClass.class;
@@ -26,7 +49,18 @@ public class ReflectionExample {
 
 
         }
-        System.out.println("SomeClass " + sb);
+        Method[] methods = someCls.getDeclaredMethods();
+        for (Method m:methods )
+        {
+            sb.append(m.getName());
+            sb.append(" = ");
+            m.setAccessible(true);
+            sb.append(m.getTypeParameters());
+            sb.append(' ');
+
+
+        }
+        System.out.println(sb);
     }}
 
 class SomeClass extends ParentClass{
@@ -85,4 +119,4 @@ class ParentClass{
         System.out.println("parent void");
     }
 
-}}
+}
