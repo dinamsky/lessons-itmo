@@ -28,14 +28,21 @@ public class ReflectionExample {
         cls = cls.getSuperclass();
         System.out.println("родитель " + cls.getName());
 
-        Class<SomeClass> someClassClass = SomeClass.class;
-        System.out.println(someClass.toString());
+        Class<SomeClass> someCls = SomeClass.class;
+        Constructor<SomeClass> someClassConstructor =
+                someCls.getDeclaredConstructor(String.class, int.class);
+        SomeClass someClass1 =
+                someClassConstructor.newInstance("SomeClass", 3);
+        SomeClass someClass2 = someClassConstructor.newInstance("ttt", 5);
+        System.out.println(someClass1.toString()+"\n"+someClass2.toString()+"\n"+someClass.toString());
     }
 
 
-    public static void toString(SomeClass someClass) throws NoSuchFieldException, IllegalAccessException {
+    public static void toString(SomeClass someClass) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException, InstantiationException {
 
         Class<SomeClass> someCls = SomeClass.class;
+
+
         ///доступ к полям класса
         Field[] declared = someCls.getDeclaredFields();
         StringBuilder sb = new StringBuilder();
