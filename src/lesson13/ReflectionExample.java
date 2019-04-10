@@ -10,54 +10,23 @@ import java.util.Arrays;
 @Enabled
 public class ReflectionExample {
     // Рефлексия в Java
-    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException, InstantiationException {
-        System.out.println(String.class);
-        SomeClass someClass = new SomeClass();
-        //System.out.println(someClass.getClass());
+    public static void toString(SomeClass someClass) throws NoSuchFieldException, IllegalAccessException {
 
-        //    System.out.println(SomeClass.toStr());}
-        public void toStr (Object obj){
-            //Доступ к компонентам класса
-            Class cls = obj.getClass();
-            Class<?> someCls = obj.getClass();
-
-            //доступ к полям класса
-            Field[] fields = someCls.getFields();
-            System.out.println(Arrays.toString(fields));
-
-            Field[] declaredField = someCls.getDeclaredFields();
-            System.out.println(Arrays.toString(declaredField));
-
-            //доступ к методам класса
-            Method[] methods = someCls.getMethods();
-            System.out.println(Arrays.toString(methods));
-            Method[] declaredMethods = someCls.getDeclaredMethods();
-            System.out.println(declaredMethods);
-
-            //оступ к конструкторам
-            Constructor<?>[] declaredConstructors = someCls.getDeclaredConstructors();
-            System.out.println(Arrays.toString(declaredConstructors));
-            // доступ к конкретному полю, методу, конструктору
-            //  Field field = someCls.getDeclaredField("version");
-            //  System.out.println(field.getType());
-            //  field.setAccessible(true);
-            //   field.set(someClass, 1);
-            System.out.println();
-            //доступ к приватному методу
-//           Method method = someCls.getDeclaredMethod();
-//           method.setAccessible(true);
-//           String data = (String) method.invoke(obj);
-//            System.out.println("data:" + data);
-
-            //конструктор
-            Constructor<SomeClass> someClassConstructor = someCls.getDeclaredConstructor(String.class, int.class);
-            SomeClass someClass1 = someClassConstructor.newInstance("someClass", 1);
-            System.out.println(someClass1);
+        Class<SomeClass> someCls = SomeClass.class;
+        ///доступ к полям класса
+        Field[] declared = someCls.getDeclaredFields();
+        StringBuilder sb = new StringBuilder();
+        for (Field f:declared )
+        {
+            sb.append(f.getName());
+            sb.append(" = ");
+            f.setAccessible(true);
+            sb.append(f.get(someClass));
+            sb.append(' ');
 
 
         }
-
-
+        System.out.println("SomeClass " + sb);
     }}
 
 class SomeClass extends ParentClass{
@@ -116,4 +85,4 @@ class ParentClass{
         System.out.println("parent void");
     }
 
-}
+}}
