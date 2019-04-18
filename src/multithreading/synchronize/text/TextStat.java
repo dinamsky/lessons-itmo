@@ -1,4 +1,4 @@
-package lesson10.text;
+package multithreading.synchronize.text;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -9,6 +9,8 @@ import java.util.function.Function;
 
 
 public class TextStat {
+
+
         public static void main(String[] args) throws IOException  {
             String fileName = "C:\\Users\\Игорь\\IdeaProjects\\lessons\\resources\\wp.txt";
             String str = Files.readString(Paths.get(fileName));
