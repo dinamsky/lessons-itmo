@@ -1,5 +1,6 @@
 package lucene;
 
+import org.apache.lucene.analysis.ru.RussianAnalyzer;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.queryparser.classic.ParseException;

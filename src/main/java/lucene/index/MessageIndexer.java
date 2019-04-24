@@ -1,7 +1,8 @@
 package lucene.index;
 
 import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.ru;
+
+import org.apache.lucene.analysis.ru.RussianAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
