@@ -19,6 +19,11 @@
     <orderEntry type="library" name="Maven: org.apache.lucene:lucene-queryparser:8.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.lucene:lucene-queries:8.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.lucene:lucene-sandbox:8.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.twitter.twittertext:twitter-text:3.0.1" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.8.7" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.8.0" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.8.7" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:2.0.1" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.5" level="project" />
   </component>
