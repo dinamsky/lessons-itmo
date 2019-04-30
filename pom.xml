@@ -58,6 +58,11 @@
 
 
         <!--Lucene libs end-->
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>3.4.1</version>
+        </dependency>
 
         <!--For basic IO operations-->
         <dependency>
