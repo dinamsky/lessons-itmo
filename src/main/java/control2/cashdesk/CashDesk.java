@@ -7,7 +7,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 
 public class CashDesk {
-
+    public Client current = null;
     private ReentrantLock lock = new ReentrantLock();
     private LinkedList<Client> clients;
     private int number;
@@ -46,5 +46,13 @@ public class CashDesk {
 
     public ReentrantLock getLock() {
         return lock;
+    }
+
+    public void nextClient()
+    {
+        if(clients.size()==0)
+            current=null;
+        else
+            current = clients.get(0);
     }
 }

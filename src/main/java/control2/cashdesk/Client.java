@@ -23,13 +23,15 @@ public class Client extends Thread {
         System.out.println("Клиент " + getClientName() + " встал на кассу#"+ cashDesk.getNumber());
         cashDesk.addClient(this);
         while (true) {
-            if (cashDesk.getLock().tryLock()) {
+            if(cashDesk.current==null)
+                cashDesk.nextClient();
+            if (cashDesk.current==this) {
                 try {
                     cashDesk.serveClient(this);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
-                    cashDesk.getLock().unlock();
+                    cashDesk.nextClient();
                     break;
                 }
             } else {
