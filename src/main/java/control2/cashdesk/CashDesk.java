@@ -6,86 +6,45 @@ import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
 
-public class CashDesk extends Thread {
+public class CashDesk {
 
-private ReentrantLock lock = new ReentrantLock();
-private LinkedList<Client> clients;
-private int number;
-private int timeOfService;
-private boolean isShutdownRequested;
+    private ReentrantLock lock = new ReentrantLock();
+    private LinkedList<Client> clients;
+    private int number;
+    private int timeOfService;
 
-public CashDesk(int number, int timeOfService) {
+    public CashDesk(int number, int timeOfService) {
         clients = new LinkedList<>();
         this.number = number;
         this.timeOfService = timeOfService;
-        }
 
-@Override
-public void run() {
+    }
 
-        while (true) {
-        Client client = null;
-        try {
-        lock.lock();
-        if (isShutdownRequested)
-        break;
-        if (clients.size() > 0)
-        client = clients.removeFirst();
-        } finally {
-        lock.unlock();
-        }
-        if (client == null) {
+    public void serveClient(Client client) throws InterruptedException {
+        System.out.println("Клиент "+client.getClientName() + " обслуживается на кассе#"+getNumber());
 
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            continue;
-        }
-            try {
-                serveClient(client);
-            } catch (InterruptedException | InvalidOperationException e) {
-                e.printStackTrace();
-            }
-        }
-        }
+            client.sleep(timeOfService );
 
+        System.out.println("Клиент "+client.getClientName() + " обслужен");
+    }
 
-private void serveClient(Client client) throws InterruptedException, InvalidOperationException {
-        System.out.println("Клиент " + client.getClientName() +
-        " обслуживается на кассе#" + getNumber());
-
-        if (!client.StartServe(this))
-
-        return;
-        Thread.sleep(timeOfService );
-        client.FinishServe();
-        System.out.println("Клиент " + client.getClientName() + " обслужен");
-        }
-
-
-public List<Client> getClients() {
+    public List<Client> getClients() {
         return Collections.unmodifiableList(clients);
-        }
+    }
 
-
-public void addClient(Client client) {
-        if (isShutdownRequested){
-            System.out.println("очередь больше не принимает");
-        return;}
+    public void addClient(Client client) {
         clients.add(client);
-        }
+    }
 
-
-public void removeClient(Client client) {
+    public void removeClient(Client client) {
         clients.remove(client);
-        }
+    }
 
-
-public int getNumber() {
+    public int getNumber() {
         return number;
-        }
+    }
 
-
-        }
+    public ReentrantLock getLock() {
+        return lock;
+    }
+}
