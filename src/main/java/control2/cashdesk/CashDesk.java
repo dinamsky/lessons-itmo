@@ -59,7 +59,7 @@ private void serveClient(Client client) throws InterruptedException, InvalidOper
         if (!client.StartServe(this))
 
         return;
-        Thread.sleep(timeOfService * client.getItemsInOrder());
+        Thread.sleep(timeOfService );
         client.FinishServe();
         System.out.println("Клиент " + client.getClientName() + " обслужен");
         }
