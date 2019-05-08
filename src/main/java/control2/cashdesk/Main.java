@@ -10,7 +10,7 @@ public class Main {
             restaurant.addCashDesk(cashDesk2);
             restaurant.addCashDesk(cashDesk3);
             restaurant.addCashDesk(cashDesk4);
-            for (int i = 1; i < 8; i++) {
+            for (int i = 1; i < 12; i++) {
                 Client client =  new Client(restaurant,  "client"+i);
                 client.start();
             }
