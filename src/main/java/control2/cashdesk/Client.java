@@ -20,7 +20,7 @@ public class Client extends Thread {
     public void run() {
         System.out.println("Клиент " + name + " пришел в ресторан " + restaurant.getName());
         this.cashDesk = chooseCashDesk();
-        System.out.println("Клиент " + getClientName() + " встал на кассу#"+ cashDesk.getNumber());
+        System.out.println("Клиент " + getClientName() + " встал на кассу#"+ cashDesk.getNumber()+" в очереди " + cashDesk.getClients().size() +" человек");
         cashDesk.addClient(this);
         while (true) {
             if (cashDesk.getLock().tryLock())
@@ -62,7 +62,7 @@ public class Client extends Thread {
         if(result.getClients().size() + 1 < cashDesk.getClients().size()) {
             cashDesk = result;
             cashDesk.addClient(this);
-            System.out.println("Клиент " + getClientName() + " перешел на кассу#" + cashDesk.getNumber());
+            System.out.println("Клиент " + getClientName() + " перешел на кассу#" + cashDesk.getNumber()+" встал "+cashDesk.getClients().size());
             return true;
         }
         return false;
