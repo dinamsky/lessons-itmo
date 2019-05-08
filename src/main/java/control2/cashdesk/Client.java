@@ -8,13 +8,13 @@ public class Client extends Thread  {
     private Restaurant restaurant;
     private CashDesk cashDesk;
     private String name;
-    private int itemsInOrder;
+
     private boolean isBeingServed;
     private boolean isServed;
 
-    public Client(Restaurant restaurant, int itemsInOrder, String name) {
+    public Client(Restaurant restaurant,  String name) {
         this.restaurant = restaurant;
-        this.itemsInOrder = itemsInOrder;
+
         this.name = name;
     }
 
@@ -22,9 +22,6 @@ public class Client extends Thread  {
         return name;
     }
 
-    public int getItemsInOrder() {
-        return itemsInOrder;
-    }
 
     public boolean StartServe(CashDesk cashDesk) throws InvalidOperationException{
         lock.lock();
